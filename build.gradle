@@ -1,0 +1,27 @@
+plugins {
+    id 'java'
+    id "io.qameta.allure" version "2.11.2"
+}
+repositories {
+    mavenCentral()
+}
+def junitVersion = "5.10.1"
+dependencies {
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
+    testRuntimeOnly(
+            "org.junit.jupiter:junit-jupiter-engine:$junitVersion",
+            "org.slf4j:slf4j-simple:1.7.29"
+
+    )
+}
+tasks.withType(Test).configureEach {
+    useJUnitPlatform()
+    jvmArgs "-Dfile.encoding=UTF-8"
+    testLogging {
+        lifecycle {
+            //           events "started", "failed"
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
+    }
+}
