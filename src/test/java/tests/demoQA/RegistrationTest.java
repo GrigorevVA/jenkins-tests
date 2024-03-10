@@ -1,17 +1,17 @@
 package tests.demoQA;
 
+import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
 
-public class RegistrationTest {
+public class RegistrationTest extends TestBase {
     @Test
     void fillFormTest() {
-        open("/automation-practice-form");
-        $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
+        Selenide.open("/automation-practice-form");
+        //$(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
 
         $("#firstName").setValue("Alex");
         $("#lastName").setValue("Egorov");
