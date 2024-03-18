@@ -5,12 +5,14 @@ import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selectors.byTitle;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 
 public class RegistrationTest extends TestBase {
     @Test
     void fillFormTest() {
-        Selenide.open("/automation-practice-form");
+        open("/automation-practice-form");
         //$(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
 
         $("#firstName").setValue("Alex");
@@ -23,6 +25,7 @@ public class RegistrationTest extends TestBase {
         $(".react-datepicker__year-select").selectOption("2008");
         $("[aria-label$='July 30th, 2008']").click();
         $("#subjectsInput").setValue("Math").pressEnter();
+        //$(byText("Sports")).click();
         $("#hobbiesWrapper").$(byText("Sports")).click();
         $("#uploadPicture").uploadFromClasspath("img/1.png");
         $("#currentAddress").setValue("Some address 1");
