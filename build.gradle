@@ -29,7 +29,8 @@ dependencies {
     testImplementation (
             "org.junit.jupiter:junit-jupiter-api:$junitVersion",
             "com.codeborne:selenide:7.0.0",
-            "io.qameta.allure:allure-selenide:$allureVersion")
+            "com.codeborne:selenide-selenoid:6.19.0",
+            "io.qameta.allure:allure-selenide:$allureVersion",)
     testRuntimeOnly(
             "org.junit.jupiter:junit-jupiter-engine:$junitVersion",
             "org.slf4j:slf4j-simple:1.7.29"
