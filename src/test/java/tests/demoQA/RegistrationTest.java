@@ -1,6 +1,7 @@
 package tests.demoQA;
 
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
@@ -16,7 +17,7 @@ public class RegistrationTest extends TestBase {
         step("Открываем главную страницу", () -> {
         open("/automation-practice-form");});
         //$(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
-
+        step("Ввести данные для регистрации", () -> {
         $("#firstName").setValue("Alex");
         $("#lastName").setValue("Egorov");
         $("#userEmail").setValue("alex@egorov.com");
@@ -34,12 +35,14 @@ public class RegistrationTest extends TestBase {
         $("#state").scrollTo().click();
         $("#stateCity-wrapper").$(byText("NCR")).click();
         $("#city").click();
-        $("#stateCity-wrapper").$(byText("Noida")).click();
-        $("#submit").click();
-
+        $("#stateCity-wrapper").$(byText("Noida")).click();});
+        step("Нажать на кнопку Submit", () -> {
+        $("#submit").click();});
+        step("Осуществить необходимые проверки", () -> {
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
         $(".table-responsive").$(byText("Student Name"))
-                .parent().shouldHave(text("Alex Egorov"));
+                .parent().shouldHave(text("Alex Egorov"));});
     }
+
 }
 
