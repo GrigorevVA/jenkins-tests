@@ -8,11 +8,13 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.byTitle;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
+import static io.qameta.allure.Allure.step;
 
 public class RegistrationTest extends TestBase {
     @Test
     void fillFormTest() {
-        open("/automation-practice-form");
+        step("Открываем главную страницу", () -> {
+        open("/automation-practice-form");});
         //$(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
 
         $("#firstName").setValue("Alex");
