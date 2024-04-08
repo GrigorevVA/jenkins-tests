@@ -40,6 +40,7 @@ dependencies {
 tasks.withType(Test).configureEach {
     useJUnitPlatform()
     jvmArgs "-Dfile.encoding=UTF-8"
+    systemProperties(System.getProperties())
     testLogging {
         lifecycle {
             //           events "started", "failed"
@@ -47,4 +48,10 @@ tasks.withType(Test).configureEach {
             exceptionFormat "short"
         }
     }
+}
+task properties_tests(type: Test) {
+    useJUnitPlatform {
+        includeTags "properties"
+    }
+
 }
